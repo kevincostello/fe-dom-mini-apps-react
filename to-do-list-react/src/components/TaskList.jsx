@@ -5,7 +5,7 @@ function TaskList(props) {
   return (
     <main>
       {props.tasks.map(task => {
-        return <TaskCard task={task} key={task.task_id} />;
+        return <TaskCard task={task} key={task.task_id} func={props.func} />;
       })}
     </main>
   );

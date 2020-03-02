@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+.clicked {
+  text-decoration: line-through;
+}
+
+.notDone {
+  background-color: red;
+}
+
+.completed {
+  background-color: green;
+  text-decoration: line-through;
+}

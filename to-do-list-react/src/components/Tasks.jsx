@@ -15,7 +15,7 @@ export class Tasks extends Component {
         ) : (
           <>
             <ul>
-              <TaskList tasks={this.state.tasks} />
+              <TaskList tasks={this.state.tasks} func={this.handleClick} />
               {/* {console.log(
                 "maximumj id is: ",
                 this.state.tasks.reduce((a, c) => {
@@ -67,18 +67,39 @@ export class Tasks extends Component {
     });
   };
 
+  handleClick = clickedTask => {
+    // const { name, value } = event.target;
+    console.dir(clickedTask);
+    // event.target.className = "clicked";
+    // console.log(event.target.className);
+    this.setState(currentState => {
+      const newTasks = currentState.tasks.map(task => {
+        console.log("task is:", task, clickedTask);
+        if (task.task_name === clickedTask) {
+          console.log("in here?");
+          task.completed = !task.completed;
+        }
+        return task;
+      });
+      return { tasks: [...newTasks] };
+    });
+    console.log("current state", this.state.tasks);
+  };
+
   componentDidMount() {
     this.setState({
       tasks: [
         {
           // task_id: 10,
           task_name: "Tidy sock drawer",
-          due_date: new Date("2022-02-05").toISOString()
+          due_date: new Date("2022-02-05").toISOString(),
+          completed: false
         },
         {
           // task_id: 2,
           task_name: "Sort stamp collection",
-          due_date: new Date("2020-03-05").toISOString()
+          due_date: new Date("2020-03-05").toISOString(),
+          completed: false
         }
       ],
       isLoading: false
