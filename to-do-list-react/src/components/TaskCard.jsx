@@ -1,7 +1,6 @@
 import React from "react";
 
 function TaskCard(props) {
-  console.log(props);
   return (
     <main>
       <li>
