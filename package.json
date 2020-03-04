@@ -1,0 +1,20 @@
+{
+  "name": "fe-dom-mini-apps",
+  "version": "1.0.0",
+  "description": "Today is just about trying some things out and getting to know the DOM. Keep track of what you don't know! Every time you feel some frustration, put that in the bank and know things will be different soon...",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/northcoders/fe-dom-mini-apps.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/northcoders/fe-dom-mini-apps/issues"
+  },
+  "homepage": "https://github.com/northcoders/fe-dom-mini-apps#readme"
+}
