@@ -107,8 +107,6 @@ export class Tasks extends Component {
     // const isSaved = false;
     // const tasksSaved = [];
 
-    const parsed = JSON.parse(tasksSaved);
-
     console.log("mounting:", isSaved, tasksSaved.substr(0, 4), typeof parsed);
 
     if (isSaved) {
