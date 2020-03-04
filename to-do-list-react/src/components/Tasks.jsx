@@ -44,6 +44,10 @@ export class Tasks extends Component {
               </label>
               <button>Submit</button>
             </form>
+
+            <form action="" onClick={this.handleSave}>
+              <button>Save tasks</button>
+            </form>
           </>
         )}
       </main>
@@ -86,24 +90,51 @@ export class Tasks extends Component {
     console.log("current state", this.state.tasks);
   };
 
+  handleSave = event => {
+    event.preventDefault();
+    const { tasks, isLoading } = this.state;
+    const isSaved = true;
+    localStorage.setItem("tasksSaved", JSON.stringify(tasks));
+    localStorage.setItem("isSaved", isSaved);
+    // localStorage.setItem("isLoading", isLoading)
+    console.log("isLoading: ", isSaved, tasks);
+  };
+
   componentDidMount() {
-    this.setState({
-      tasks: [
-        {
-          // task_id: 10,
-          task_name: "Tidy sock drawer",
-          due_date: new Date("2022-02-05").toISOString(),
-          completed: false
-        },
-        {
-          // task_id: 2,
-          task_name: "Sort stamp collection",
-          due_date: new Date("2020-03-05").toISOString(),
-          completed: false
-        }
-      ],
-      isLoading: false
-    });
+    const isSaved = localStorage.getItem("isSaved");
+    const tasksSaved = localStorage.getItem("tasksSaved");
+
+    // const isSaved = false;
+    // const tasksSaved = [];
+
+    const parsed = JSON.parse(tasksSaved);
+
+    console.log("mounting:", isSaved, tasksSaved.substr(0, 4), typeof parsed);
+
+    if (isSaved) {
+      this.setState({
+        tasks: tasksSaved,
+        isLoading: false
+      });
+    } else {
+      this.setState({
+        tasks: [
+          {
+            // task_id: 10,
+            task_name: "Tidy sock drawer",
+            due_date: new Date("2022-02-05").toISOString(),
+            completed: false
+          },
+          {
+            // task_id: 2,
+            task_name: "Sort stamp collection",
+            due_date: new Date("2020-03-05").toISOString(),
+            completed: false
+          }
+        ],
+        isLoading: false
+      });
+    }
   }
 
   componentDidUpdate(props, prevProps) {
