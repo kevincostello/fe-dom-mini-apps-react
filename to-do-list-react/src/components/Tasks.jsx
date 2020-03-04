@@ -95,23 +95,27 @@ export class Tasks extends Component {
     const { tasks, isLoading } = this.state;
     const isSaved = true;
     localStorage.setItem("tasksSaved", JSON.stringify(tasks));
+    // localStorage.setItem("tasksSaved", tasks);
     localStorage.setItem("isSaved", isSaved);
     // localStorage.setItem("isLoading", isLoading)
-    console.log("isLoading: ", isSaved, tasks);
+    console.log("isLoading: ", isSaved, tasks, Array.isArray(tasks));
   };
 
   componentDidMount() {
-    const isSaved = localStorage.getItem("isSaved");
+    // let isSaved = localStorage.getItem("isSaved");
     const tasksSaved = localStorage.getItem("tasksSaved");
 
     // const isSaved = false;
-    // const tasksSaved = [];
+    // const parsed = JSON.psarse(tasksSaved);
 
-    console.log("mounting:", isSaved, tasksSaved.substr(0, 4), typeof parsed);
+    console.log("mounting:", tasksSaved);
 
-    if (isSaved) {
+    // isSaved = false;
+
+    if (tasksSaved) {
+      const state = JSON.parse(tasksSaved);
       this.setState({
-        tasks: tasksSaved,
+        tasks: state,
         isLoading: false
       });
     } else {
